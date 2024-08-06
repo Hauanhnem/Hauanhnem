@@ -258,45 +258,45 @@
         </div>
         <div class="row">
             <div class="rsvp-form">
-                <form class="form">
-                    <div class="row">
-                        <div class="input-group w50">
-                            <input type="text" name="fullname" placeholder="Họ và tên" class="input-control">
-                        </div>
-                        <div class="input-group w50">
-                            <input type="text" name="email" placeholder="Email" class="input-control">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group w50">
-                            <input type="text" name="guest_count" placeholder="Số lượng tham dự" class="input-control">
-                        </div>
-                        <div class="input-group w50">
-                            <select name="guest_slide" class="input-control">
-                                <option value="Khách nhà trai">Khách nhà trai</option>
-                                <option vlaue="Khách nhà gái">Khách nhà gái</option>
-                            </select>                       
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group">
-                            <select name="attendance" class="input-control">
-                                <option value="Xác nhận tham gia">Xác nhận tham gia</option>
-                                <option value="Không tham gia được">Không tham gia được</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group">
-                            <textarea name="wishes" placeholder="Lời chúc" class="input-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group">
-                            <button type="submit" class="btn-1">Gửi</button>
-                        </div>
-                    </div>    
-                </form>
+               <form class="form" method="post" action="YOUR_DEPLOYMENT_URL">
+    <div class="row">
+        <div class="input-group w50">
+            <input type="text" name="fullname" placeholder="Họ và tên" class="input-control">
+        </div>
+        <div class="input-group w50">
+            <input type="text" name="email" placeholder="Email" class="input-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group w50">
+            <input type="text" name="guest_count" placeholder="Số lượng tham dự" class="input-control">
+        </div>
+        <div class="input-group w50">
+            <select name="guest_slide" class="input-control">
+                <option value="Khách nhà trai">Khách nhà trai</option>
+                <option value="Khách nhà gái">Khách nhà gái</option>
+            </select>                       
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <select name="attendance" class="input-control">
+                <option value="Xác nhận tham gia">Xác nhận tham gia</option>
+                <option value="Không tham gia được">Không tham gia được</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <textarea name="wishes" placeholder="Lời chúc" class="input-control"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <button type="submit" class="btn-1">Gửi</button>
+        </div>
+    </div>    
+</form>
             </div>
         </div>
     </div>
@@ -358,24 +358,6 @@
 
 <!--scroll-->
 <script src="js/scrollIt.min.js"></script>
-
-<script>
-    document.querySelector('.form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Ngăn form gửi theo cách thông thường
-    
-        var formData = new FormData(this);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "AKfycbyRWWIgTtboZLoH9yGYWqzF1Xeqo3Au6yKhILkTbs4", true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                alert('Form submitted successfully!');
-            } else {
-                alert('Form submission failed!');
-            }
-        };
-        xhr.send(formData);
-    });
-    </script>
     
 </body>
 </html>

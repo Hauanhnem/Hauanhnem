@@ -261,16 +261,17 @@ footer{
 }
 
 .home-section .home-content h2{
-    font-size: 80px;
+    font-size: 40px;
     color: #ffffff;
-    margin: 0;
     font-weight: normal;
-    font-family: 'Roboto',cursive;
+    font-family: 'Dancing Script',cursive;
+    padding: 7px 30px;
+    margin: 15px 0 0;
 }
 .home-section .slide.active .home-content h2{
     opacity: 0;
     animation: fadeInTop 1s ease forwards;
-    animation-delay: 0.5s;
+    animation-delay: 1.5s;
 }
 /*couple section*/
 .couple-section{

@@ -11,27 +11,6 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script>
-      function submitForm(event) {
-        event.preventDefault(); // Ngăn không cho form gửi theo cách truyền thống
-
-        var formData = new FormData(document.querySelector('.form'));
-        
-        fetch('https://script.google.com/macros/s/AKfycbxTXplB7tF68CXMGUulVC2CCjQEPc9wl4vCx4lqJaR9LYFatGIm-XSu1LdwMHFy_yww/exec', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Hiển thị thông báo
-          document.getElementById('responseMessage').textContent = data.message;
-        })
-        .catch(error => {
-          // Hiển thị thông báo lỗi nếu có
-          document.getElementById('responseMessage').textContent = 'Đã xảy ra lỗi. Vui lòng thử lại.';
-        });
-      }
-    </script>
     
 </head>
 <body>
@@ -280,48 +259,49 @@
         </div>
         <div class="row">
             <div class="rsvp-form">
-               <form class="form" onsubmit="submitForm(event)">
-        <div class="row">
-            <div class="input-group w50">
-                <input type="text" name="fullname" placeholder="Họ và tên" class="input-control">
-            </div>
-            <div class="input-group w50">
-                <input type="text" name="email" placeholder="Email" class="input-control">
-            </div>
+               <form class="form" id="myForm">
+    <div class="row">
+        <div class="input-group w50">
+            <input type="text" name="fullname" placeholder="Họ và tên" class="input-control">
         </div>
-        <div class="row">
-            <div class="input-group w50">
-                <input type="text" name="guest_count" placeholder="Số lượng tham dự" class="input-control">
-            </div>
-            <div class="input-group w50">
-                <select name="guest_slide" class="input-control">
-                    <option value="Khách nhà trai">Khách nhà trai</option>
-                    <option value="Khách nhà gái">Khách nhà gái</option>
-                </select>                       
-            </div>
+        <div class="input-group w50">
+            <input type="text" name="email" placeholder="Email" class="input-control">
         </div>
-        <div class="row">
-            <div class="input-group">
-                <select name="attendance" class="input-control">
-                    <option value="Xác nhận tham gia">Xác nhận tham gia</option>
-                    <option value="Không tham gia được">Không tham gia được</option>
-                </select>
-            </div>
+    </div>
+    <div class="row">
+        <div class="input-group w50">
+            <input type="text" name="guest_count" placeholder="Số lượng tham dự" class="input-control">
         </div>
-        <div class="row">
-            <div class="input-group">
-                <textarea name="wishes" placeholder="Lời chúc" class="input-control"></textarea>
-            </div>
+        <div class="input-group w50">
+            <select name="guest_slide" class="input-control">
+                <option value="Khách nhà trai">Khách nhà trai</option>
+                <option value="Khách nhà gái">Khách nhà gái</option>
+            </select>                       
         </div>
-        <div class="row">
-            <div class="input-group">
-                <button type="submit" class="btn-1">Gửi</button>
-            </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <select name="attendance" class="input-control">
+                <option value="Xác nhận tham gia">Xác nhận tham gia</option>
+                <option value="Không tham gia được">Không tham gia được</option>
+            </select>
         </div>
-    </form>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <textarea name="wishes" placeholder="Lời chúc" class="input-control"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group">
+            <button type="submit" class="btn-1">Gửi</button>
+        </div>
+    </div>    
+</form>
 
-    <!-- Phần thông báo -->
-    <div id="responseMessage"></div>
+<!-- Phần thông báo -->
+<div id="responseMessage"></div>
+
 
             </div>
         </div>
@@ -384,6 +364,26 @@
 
 <!--scroll-->
 <script src="js/scrollIt.min.js"></script>
-    
+
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Ngăn form gửi và chuyển trang
+
+    const formData = new FormData(this);
+
+    fetch('https://script.google.com/macros/s/AKfycbz_Ro9z-vc8SELF4ODta7EJJ99hRSfV9XJf4Sb2oenvaWPGq5PlYNuWBv8l7kbzAMM/exec', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(result => {
+        document.getElementById('responseMessage').textContent = 'Đã gửi thành công!';
+        document.getElementById('myForm').reset(); // Xóa dữ liệu trong form (tùy chọn)
+    })
+    .catch(error => {
+        document.getElementById('responseMessage').textContent = 'Có lỗi xảy ra, vui lòng thử lại!';
+        console.error('Error:', error);
+    });
+});
+
 </body>
 </html>

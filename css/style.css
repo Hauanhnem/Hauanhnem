@@ -67,6 +67,12 @@ footer{
     letter-spacing: 2px;
     Margin: 0;
     text-transform: none;
+    white-space: nowrap;
+}
+@media (max-width:768px){
+    .section-title h2{
+        font-size: 36px;
+    }
 }
 .btn-1{
     padding: 10px 35px;
